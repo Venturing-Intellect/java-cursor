@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 interface Feedback {
+  name: string;
   email: string;
   feedbackText: string;
 }

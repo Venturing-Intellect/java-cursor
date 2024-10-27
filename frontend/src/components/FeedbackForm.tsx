@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { submitFeedback } from '../services/feedbackService';
 
 const FeedbackForm: React.FC = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [feedbackText, setFeedbackText] = useState('');
   const [message, setMessage] = useState('');
@@ -10,9 +11,10 @@ const FeedbackForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await submitFeedback({ email, feedbackText });
+      await submitFeedback({ name, email, feedbackText });
       setMessage('Feedback submitted successfully!');
       setIsError(false);
+      setName('');
       setEmail('');
       setFeedbackText('');
     } catch (error) {
@@ -24,6 +26,20 @@ const FeedbackForm: React.FC = () => {
   return (
     <div className="container mt-5">
       <form onSubmit={handleSubmit} className="needs-validation" noValidate>
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">Name</label>
+          <input
+            type="text"
+            className="form-control"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <div className="invalid-feedback">
+            Please provide your name.
+          </div>
+        </div>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email address</label>
           <input

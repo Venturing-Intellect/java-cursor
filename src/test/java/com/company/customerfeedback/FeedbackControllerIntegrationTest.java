@@ -34,6 +34,7 @@ class FeedbackControllerIntegrationTest {
     @Test
     void submitFeedback_shouldSaveFeedbackAndReturnOk() throws Exception {
         Feedback feedback = new Feedback();
+        feedback.setName("John Doe");
         feedback.setEmail("test@example.com");
         feedback.setFeedbackText("Great service!");
 
@@ -45,6 +46,7 @@ class FeedbackControllerIntegrationTest {
         // Verify that the feedback was saved to the database
         Feedback savedFeedback = feedbackRepository.findByEmail("test@example.com");
         assertNotNull(savedFeedback);
+        assertEquals("John Doe", savedFeedback.getName());
         assertEquals("Great service!", savedFeedback.getFeedbackText());
     }
 }

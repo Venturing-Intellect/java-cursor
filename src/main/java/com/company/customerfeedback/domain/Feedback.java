@@ -14,6 +14,9 @@ public class Feedback {
     private Long id;
 
     @NotBlank
+    private String name;
+
+    @NotBlank
     @Email(regexp = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")
     private String email;
 
@@ -27,6 +30,14 @@ public class Feedback {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {

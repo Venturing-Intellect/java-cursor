@@ -35,6 +35,7 @@ class FeedbackServiceTest {
     @Test
     void submitFeedback_shouldSaveFeedback() {
         Feedback feedback = new Feedback();
+        feedback.setName("John Doe");
         feedback.setEmail("test@example.com");
         feedback.setFeedbackText("Great service!");
 
@@ -55,6 +56,7 @@ class FeedbackServiceTest {
     })
     void testValidEmails(String email) {
         Feedback feedback = new Feedback();
+        feedback.setName("John Doe");
         feedback.setEmail(email);
         feedback.setFeedbackText("Test feedback");
 
@@ -82,6 +84,7 @@ class FeedbackServiceTest {
     })
     void testInvalidEmails(String email) {
         Feedback feedback = new Feedback();
+        feedback.setName("John Doe");
         feedback.setEmail(email);
         feedback.setFeedbackText("Test feedback");
 
